@@ -1,0 +1,58 @@
+/*
+~   Copyright (c) 2018 WSO2 Inc. (http://wso2.com) All Rights Reserved.
+~
+~   Licensed under the Apache License, Version 2.0 (the "License");
+~   you may not use this file except in compliance with the License.
+~   You may obtain a copy of the License at
+~
+~        http://www.apache.org/licenses/LICENSE-2.0
+~
+~   Unless required by applicable law or agreed to in writing, software
+~   distributed under the License is distributed on an "AS IS" BASIS,
+~   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+~   See the License for the specific language governing permissions and
+~   limitations under the License.
+*/
+
+body {
+    background: #f5f5f4;
+}
+.nav {
+    border-right: 1px solid #e7eaec;
+}
+.nav-header {
+    padding: 33px 25px;
+    background-color: #ffffff;
+    background-image: none;
+}
+body.mini-navbar .nav-header {
+    background-color: #f5f5f4;
+}
+.logo-element {
+    color: #030000;
+}
+.nav > li.active > a {
+    background: #332E70;
+}
+
+.navbar-default .nav > li > a:hover, .navbar-default .nav > li > a:focus {
+    background-color: #332e70;
+    color: #fff;
+    transition: all 500ms;
+}
+
+.nav > li > a {
+    color: #5a5a5a;
+    background: #fff;
+    border-bottom: 1px solid #e7eaec;
+}
+.dropdown-menu {
+    box-shadow: 0 2px rgb(243, 243, 244);
+    border: 1px solid rgb(243, 243, 244);
+    color: #565758;
+}
+.ibox-title {
+    background-color: #030000;
+    border-color: #030000;
+    color: #f3f3f4;
+}
