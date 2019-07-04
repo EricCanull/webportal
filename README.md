@@ -2,4 +2,4 @@
 
 Webportal sample application for WSO2IS 
 
-![alt text](https://github.com/EricCanull/webportal/blob/master/images/kitematic-dark-01.png?raw=true "Webportal Screen Shot")
+![alt text](https://github.com/EricCanull/webportal/blob/master/src/main/webapp/assets/img/webportal_screenshot.png?raw=true "Webportal Screen Shot")
