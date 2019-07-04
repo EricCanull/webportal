@@ -129,6 +129,10 @@
   </head>
 
   <body>
+    
+      <div data-role="popup" id="popupVideo" data-overlay-theme="b" data-theme="a" data-tolerance="15,15" class="ui-content">
+              <iframe src="pages/profile.html" width="1020" height="600" seamless=""></iframe>
+      </div>
 
     <section class="main-section d-flex flex-column justify-content-between">
 
@@ -271,7 +275,6 @@
 
           <div class="side-menu-overlay" id="right-side-menu-overlay"></div>
           <!-- /Right-bar -->
-
 
             <div class="nav-item dropdown user-dropdown">
               <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">

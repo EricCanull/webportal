@@ -21,6 +21,19 @@ body {
   }
 }*/
 
+
+#popupVideo {
+  display: none;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  z-index: 99;
+}
+
+iframe {
+    border: none;
+}
+
 .journal-content-article > ul {
   margin-top: 0;
   margin-bottom: 1rem;
