@@ -5,8 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>profile</title>
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/Profile-Edit-Form.css">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css?v=2">
+    <link rel="stylesheet" href="../assets/css/style.css?v=2">
+    <link rel="stylesheet" href="../assets/css/Profile-Edit-Form.css?v=2">
+    
   </head>
 
   <body>
@@ -18,11 +20,14 @@
       </div>
       <form>
         <div class="form-row profile-row">
-          <div class="col-md-4 text-center relative">
+          <div class="col-md-3 text-center relative" id="avatar-col">
             <div class="avatar" style="text-align: center;">
               <div class="avatar-bg center"></div>
-            </div><input class="border-dark shadow form-control" type="file" name="avatar-file" style="padding: 12px 12px;height: 55px;border-width: 0;text-align: center;" accept="image/*"></div>
-          <div class="col-md-8">
+            </div>
+            <input type="button" id="changePhotoButton" value="Change Photo" onclick="document.getElementById('file').click();" />
+            <input type="file" style="display:none;" id="file" name="file" accept="image/*"/>
+          </div>
+          <div class="col-md-9">
             <h1>Profile </h1>
             <hr>
             <div class="form-row">

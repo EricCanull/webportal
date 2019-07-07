@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  font-family: Nunito,sans-serif;
-  /*font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+/*  font-family: Nunito,sans-serif;
+  font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
   height: 100%;
   width: 100%; 
   font-family: oswald, "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -22,16 +22,30 @@ body {
 }*/
 
 
-#popupVideo {
-  display: none;
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  min-width: 100%;
+  background: rgba(0,0,0,.4);
+  z-index: 100;
+  /*display: none;*/
+  z-index: 998;
+  -webkit-transition: all .2s ease-out;
+  transition: all .2s ease-out;
+}
+
+#popup-profile {
+  /*display: none;*/
   position: absolute;
-  top: 10%;
-  left: 10%;
-  z-index: 99;
+  top: 130%;
+  left: 20%;
+  z-index: 1099;
 }
 
 iframe {
-    border: none;
+  border: none;
 }
 
 .journal-content-article > ul {
@@ -140,6 +154,7 @@ div.dropdown-menu.animated.fadeInRight.m-t-xs.show {
   right: 0;
 }
 
+
 #sidebar-overlay {
   opacity: .1;
   position: absolute;
@@ -154,7 +169,7 @@ div.dropdown-menu.animated.fadeInRight.m-t-xs.show {
 }
 
 @media (max-width: 767.98px) {
-  #right-sidebar {
+  #right-sidebar, .overlay {
     overflow: auto;
   }
 }

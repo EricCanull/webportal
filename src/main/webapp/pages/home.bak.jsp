@@ -57,10 +57,14 @@
 <%
     return;
   }
-
+//  AttributeRequestor attributeRequestor = new AttributeRequestor();
+//  attributeArray = attributeRequestor.getRequestedAttributes();
   LoggedInSessionBean sessionBean = (LoggedInSessionBean) session.getAttribute(SSOAgentConstants.SESSION_BEAN_NAME);
 
+//   final Map<String, String> attributeValueMap = new HashMap<>();
+
   final Map<String, String> attributeValueMap = sessionBean.getSAML2SSO().getSubjectAttributes();
+//   attributeValueMap.put("fullname", "Eric Canull");
   ClaimManagerProxy claimManagerProxy = (ClaimManagerProxy) application.getAttribute("claimManagerProxyInstance");
 
   final Map<String, String> attributeDisplayValueMap
@@ -102,13 +106,13 @@
     <title>JagWire Portal | Main view</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     
+
 <!--    <script src="assets/js/plugins/pace/pace.min.js"></script>-->
     <!--<link rel="stylesheet" href="assets/css/plugins/pace/pace-theme-mac-osx-motion.css?v=1">-->
 
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600">
-    <!--<link rel="stylesheet" href="https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.css">-->
-    <link rel="stylesheet" href="assets/css/bootstrap-better-nav.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.css">
     <link rel="stylesheet" href="assets/css/animate.css">
     <link rel="stylesheet" href="assets/css/style.css?v=2">
     <link rel="stylesheet" href="assets/css/theme.css?v=2">
@@ -123,6 +127,7 @@
 
   <body>
   
+
     <section class="main-section d-flex flex-column justify-content-between">
 
       <div class="nav-header">

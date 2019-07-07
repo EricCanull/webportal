@@ -45,8 +45,8 @@ $(document).ready(function () {
   $("#settings-toggle").click(function () {
     $("#right-sidebar").css("right", "0px");
     $("#right-side-menu-overlay").css("display", "block");
-
   });
+  
   $("#sidebar-close-button").click(function () {
     $("#right-sidebar").css("right", "-270px");
     $("#right-side-menu-overlay").css("display", "none");
@@ -56,7 +56,6 @@ $(document).ready(function () {
     $("#right-sidebar").css("right", "-270px");
     $("#right-side-menu-overlay").css("display", "none");
   });
-
 
   $("#settings-toggle").click(function () {
     $("#main").css("display", "block");
@@ -76,53 +75,60 @@ $(document).ready(function () {
   var prettyXml = formatXml([$('.code').text()].join('\n'), "  ");
   insertText(prettyXml);
 
-  // popup examples
-  $(document).on("pagecreate", function () {
-    function scale(width, height, padding, border) {
-      var scrWidth = $(window).width() - 30,
-        scrHeight = $(window).height() - 30,
-        ifrPadding = 2 * padding,
-        ifrBorder = 2 * border,
-        ifrWidth = width + ifrPadding + ifrBorder,
-        ifrHeight = height + ifrPadding + ifrBorder,
-        h, w;
-      if (ifrWidth < scrWidth && ifrHeight < scrHeight) {
-        w = ifrWidth;
-        h = ifrHeight;
-      } else if ((ifrWidth / scrWidth) > (ifrHeight / scrHeight)) {
-        w = scrWidth;
-        h = (scrWidth / ifrWidth) * ifrHeight;
-      } else {
-        h = scrHeight;
-        w = (scrHeight / ifrHeight) * ifrWidth;
-      }
-      return {
-        'width': w - (ifrPadding + ifrBorder),
-        'height': h - (ifrPadding + ifrBorder)
-      };
-    };
-
-    $(".ui-popup iframe")
-      .attr("width", 0)
-      .attr("height", "auto");
-    $("#popupVideo").on({
-      popupbeforeposition: function () {
-        // call our custom function scale() to get the width and height
-        var size = scale(497, 298, 15, 1),
-          w = size.width,
-          h = size.height;
-        $("#popupVideo iframe")
-          .attr("width", w)
-          .attr("height", h);
-      },
-      popupafterclose: function () {
-        $("#popupVideo iframe")
-          .attr("width", 0)
-          .attr("height", 0);
-      }
-    });
+//  function scale(width, height, padding, border) {
+//    var scrWidth = $(window).width() - 30,
+//      scrHeight = $(window).height() - 30,
+//      ifrPadding = 2 * padding,
+//      ifrBorder = 2 * border,
+//      ifrWidth = width + ifrPadding + ifrBorder,
+//      ifrHeight = height + ifrPadding + ifrBorder,
+//      h, w;
+//    if (ifrWidth < scrWidth && ifrHeight < scrHeight) {
+//      w = ifrWidth;
+//      h = ifrHeight;
+//    } else if ((ifrWidth / scrWidth) > (ifrHeight / scrHeight)) {
+//      w = scrWidth;
+//      h = (scrWidth / ifrWidth) * ifrHeight;
+//    } else {
+//      h = scrHeight;
+//      w = (scrHeight / ifrHeight) * ifrWidth;
+//    }
+//    return {
+//      'width': w - (ifrPadding + ifrBorder),
+//      'height': h - (ifrPadding + ifrBorder)
+//    };
+//  };
+  
+  $("#profile-toggle").click(function () {
+     $("#profile-overlay").css("display", "block");
+    $("#popup-profile").css("display", "block");
   });
+  
+ $("#profile-overlay").click(function () {
+    $("#popup-profile").css("display", "none");
+    $("#profile-overlay").css("display", "none");
+  });
+ 
 
+//  $(".ui-popup iframe")
+//    .attr("width", 0)
+//    .attr("height", "auto");
+//  $("#profile-popup").on({
+//    popupbeforeposition: function () {
+//      // call our custom function scale() to get the width and height
+//      var size = scale(497, 298, 15, 1),
+//        w = size.width,
+//        h = size.height;
+//      $("#popupVideo iframe")
+//        .attr("width", w)
+//        .attr("height", h);
+//    },
+//    popupafterclose: function () {
+//      $("#popupVideo iframe")
+//        .attr("width", 0)
+//        .attr("height", 0);
+//    }
+//  });
 });
 
 // Begin inputting of clicked text into editor
