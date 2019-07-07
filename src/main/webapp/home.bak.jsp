@@ -29,6 +29,10 @@
 
 <%!
   String subjectId = null;
+  String fullname = "";
+  String thumbnail = "";
+  String firstname = "";
+  String role = "Student";
   final String SAML_SSO_URL = "samlsso";
   final String SAML_LOGOUT_URL = "logout";
   String samlResponse = "";
@@ -53,17 +57,29 @@
 <%
     return;
   }
-
+//  AttributeRequestor attributeRequestor = new AttributeRequestor();
+//  attributeArray = attributeRequestor.getRequestedAttributes();
   LoggedInSessionBean sessionBean = (LoggedInSessionBean) session.getAttribute(SSOAgentConstants.SESSION_BEAN_NAME);
 
-  final Map<String, String> attributeValueMap = sessionBean.getSAML2SSO().getSubjectAttributes();
+//   final Map<String, String> attributeValueMap = new HashMap<>();
 
+  final Map<String, String> attributeValueMap = sessionBean.getSAML2SSO().getSubjectAttributes();
+//   attributeValueMap.put("fullname", "Eric Canull");
   ClaimManagerProxy claimManagerProxy = (ClaimManagerProxy) application.getAttribute("claimManagerProxyInstance");
 
   final Map<String, String> attributeDisplayValueMap
           = claimManagerProxy.getLocalClaimUriDisplayValueMapping(new ArrayList<>(attributeValueMap.keySet()));
 
-  claimManagerProxy.setAttributeValueMap(attributeValueMap);
+  if (!attributeValueMap.isEmpty()) {
+    fullname = attributeDisplayValueMap.containsKey("http://wso2.org/claims/fullname") 
+      ? (String) attributeValueMap.get("http://wso2.org/claims/fullname") : fullname;
+    firstname = attributeDisplayValueMap.containsKey("http://wso2.org/claims/firstname") 
+      ? (String) attributeValueMap.get("http://wso2.org/claims/firstname") : firstname;
+    role = attributeDisplayValueMap.containsKey("http://wso2.org/claims/role") 
+      ? (String) attributeValueMap.get("http://wso2.org/claims/role") : role;
+    thumbnail = attributeDisplayValueMap.containsKey("http://wso2.org/claims/thumbnail") 
+      ? URLDecoder.decode((String) attributeValueMap.get("http://wso2.org/claims/thumbnail"), "UTF-8") : thumbnail;
+  }
 
   if (sessionBean != null && sessionBean.getSAML2SSO() != null) {
     subjectId = sessionBean.getSAML2SSO().getSubjectId();
@@ -90,12 +106,13 @@
     <title>JagWire Portal | Main view</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     
+
 <!--    <script src="assets/js/plugins/pace/pace.min.js"></script>-->
     <!--<link rel="stylesheet" href="assets/css/plugins/pace/pace-theme-mac-osx-motion.css?v=1">-->
 
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600">
-    <link rel="stylesheet" href="assets/css/bootstrap-better-nav.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.css">
     <link rel="stylesheet" href="assets/css/animate.css">
     <link rel="stylesheet" href="assets/css/style.css?v=2">
     <link rel="stylesheet" href="assets/css/theme.css?v=2">
@@ -110,6 +127,7 @@
 
   <body>
   
+
     <section class="main-section d-flex flex-column justify-content-between">
 
       <div class="nav-header">
@@ -125,18 +143,18 @@
             <div class="collapse navbar-collapse" id="navcol-1">
               <ul class="nav navbar-nav mx-auto">
                 <li class="nav-item" role="presentation"><a class="nav-link active" href="#">Home</a></li>
-                  <% if (claimManagerProxy.getRole().equalsIgnoreCase("ALUMNI") || claimManagerProxy.getRole().equalsIgnoreCase("STUDENT")) { %>
+                  <% if (role.equalsIgnoreCase("ALUMNI") || role.equalsIgnoreCase("STUDENT")) { %>
                 <li class="nav-item" role="presentation"><a class="nav-link" href="#">Classes & Registration</a></li>
                 <li class="nav-item" role="presentation"><a class="nav-link" href="#">Paying for College</a></li>
                 <li class="nav-item" role="presentation"><a class="nav-link" href="#">Student Services</a></li>
                   <% }
-                    if (claimManagerProxy.getRole().equalsIgnoreCase("FACULTY")) { %>
+                    if (role.equalsIgnoreCase("FACULTY")) { %>
                 <li class="nav-item" role="presentation"><a class="nav-link" href="#">Faculty</a></li>
                   <% }
-                    if (claimManagerProxy.getRole().equalsIgnoreCase("FACULTY") || claimManagerProxy.getRole().equalsIgnoreCase("EMPLOYEE")) { %>
+                    if (role.equalsIgnoreCase("FACULTY") || role.equalsIgnoreCase("EMPLOYEE")) { %>
                 <li class="nav-item" role="presentation"><a class="nav-link" href="#">Employee</a></li>
                   <% }
-                    if (claimManagerProxy.getRole().equalsIgnoreCase("Health Services")) { %>
+                    if (role.equalsIgnoreCase("Health Services")) { %>
                 <li class="nav-item" role="presentation"><a class="nav-link" href="#">Health Services</a></li>
                   <% } %>
               </ul>
@@ -261,24 +279,24 @@
             <div class="nav-item dropdown user-dropdown">
               <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                 <span class="account-user-avatar">
-                  <% if (claimManagerProxy.getThumbnail().equalsIgnoreCase("")) { %>
+                  <% if (thumbnail.equalsIgnoreCase("")) { %>
                   <i class="fa fa-user-circle" style="font-size: 28px; color: #22999a;"></i>
                   <% } else {%>
-                  <img alt="image" class="rounded-circle" alt="user-image" width="38px" src="<%=claimManagerProxy.getThumbnail()%>" />
+                  <img alt="image" class="rounded-circle" alt="user-image" width="38px" src="<%=thumbnail%>" />
                   <% }%>
                 </span>
                 <span>
-                  <span class="account-user-name"><%=claimManagerProxy.getFullName()%></span><br>
-                  <span class="account-position"><%=claimManagerProxy.getRole()%></span>
+                  <span class="account-user-name"><%=fullname%></span><br>
+                  <span class="account-position"><%=role%></span>
                 </span>
               </a>
               <div class="dropdown-menu animated fadeInRight m-t-xs" role="menu">
                 <a class="dropdown-item" id="profile-toggle" role="presentation" href="#">Profile</a>
                 <a class="dropdown-item" href="https://tamusa.blackboard.com/webapps/bb-auth-provider-cas-bb_bb60/execute/casLogin?cmd=login&authProviderId=_105_1&redirectUrl=https%3A%2F%2Ftamusa.blackboard.com%2Fwebapps%2Fportal%2Fframeset.jsp">BlackBoard</a>
-                <% if (claimManagerProxy.getRole().equalsIgnoreCase("ALUMNI") || claimManagerProxy.getRole().equalsIgnoreCase("STUDENT")) { %>
+                <% if (role.equalsIgnoreCase("ALUMNI") || role.equalsIgnoreCase("STUDENT")) { %>
                 <a class="dropdown-item" role="presentation" href="https://outlook.office.com/owa/?realm=jaguar.tamu.edu">Email</a>
                 <% }
-                  if (claimManagerProxy.getRole().equalsIgnoreCase("FACULTY") || claimManagerProxy.getRole().equalsIgnoreCase("EMPLOYEE")) { %>
+                  if (role.equalsIgnoreCase("FACULTY") || role.equalsIgnoreCase("EMPLOYEE")) { %>
                 <a class="dropdown-item" role="presentation" href="https://outlook.office.com/owa/?realm=tamusa.edu">Email</a>
                 <% }%>
                 <div class="dropdown-divider"></div>

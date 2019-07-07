@@ -59,21 +59,7 @@
     <param-name>certificate-file</param-name>
     <param-value>wso2carbon.jks</param-value>
   </context-param>
-  
-  <servlet>
-    <servlet-name>ConsumerServlet</servlet-name>
-    <servlet-class>org.wso2.qsg.webapp.dispatch.ConsumerServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ConsumerServlet</servlet-name>
-    <url-pattern>/consumer</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>ConsumerServlet</servlet-name>
-    <url-pattern>/token</url-pattern>
-  </servlet-mapping>
-
-
+ 
   <listener>
     <listener-class>org.wso2.carbon.identity.sso.agent.SSOAgentContextEventListener</listener-class>
   </listener>
@@ -88,7 +74,7 @@
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
     
-  <error-page>
+<!--  <error-page>
     <error-code>404</error-code>
     <location>/pages/errors.jsp</location>
   </error-page>
@@ -100,5 +86,5 @@
   <error-page>
     <exception-type>org.wso2.carbon.identity.sso.agent.exception.SSOAgentException</exception-type>
     <location>/index.jsp</location>
-  </error-page>
+  </error-page>-->
 </web-app>

@@ -69,7 +69,9 @@
             </div>
             <hr>
             <div class="form-row">
-              <div class="col-md-12 content-right"><button class="btn btn-primary form-btn" type="submit">SAVE </button><button class="btn btn-danger bg-secondary form-btn" id="cancel-button" type="button">CANCEL</button></div>
+              <div class="col-md-12 content-right">
+                <button class="btn btn-primary form-btn" type="submit">SAVE </button>
+                <button class="btn btn-danger bg-secondary form-btn" id="cancel-button" type="button">CANCEL</button></div>
             </div>
           </div>
         </div>

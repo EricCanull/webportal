@@ -17,38 +17,21 @@
  */
 package edu.portal.webportal.agent;
 
+import edu.portal.webportal.attributes.ClaimManagerProxy;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.URLDecoder;
-import java.util.ArrayList;
-import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletContextEvent;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import org.wso2.carbon.identity.sso.agent.bean.LoggedInSessionBean;
-import org.wso2.carbon.identity.sso.agent.util.SSOAgentConstants;
-import org.wso2.samples.claims.manager.ClaimManagerProxy;
 
-public class ServletContextListener extends HttpServlet implements javax.servlet.ServletContextListener {
+public class ServletContextListener implements javax.servlet.ServletContextListener {
 
     private final static Logger LOG = Logger.getLogger(ServletContextListener.class.getName());
 
     private static Properties properties;
-    private String subjectId = null;
-    private String fullname = "";
-    private String thumbnail = "";
-    private String firstname = "";
-    private String role = "";
-    private LoggedInSessionBean sessionBean;
+
     private ClaimManagerProxy claimManagerProxy;
-    private Map<String, String> attributeValueMap;
-    private Map<String, String> attributeDisplayValueMap;
-    private String[] attributeArray;
+
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
@@ -70,46 +53,7 @@ public class ServletContextListener extends HttpServlet implements javax.servlet
 
         servletContextEvent.getServletContext().setAttribute("claimManagerProxyInstance", claimManagerProxy);
     }
-
-    @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response) {
-
-        response.setContentType("text/html");
-        try (PrintWriter out = response.getWriter()) {
-            String n = request.getParameter("userName");
-            out.print("Welcome " + n);
-
-            HttpSession session = request.getSession();
-
-            sessionBean = (LoggedInSessionBean) session.getAttribute(SSOAgentConstants.SESSION_BEAN_NAME);
-
-            attributeValueMap = sessionBean.getSAML2SSO().getSubjectAttributes();
-
-            claimManagerProxy = (ClaimManagerProxy) session.getAttribute("claimManagerProxyInstance");
-
-            attributeDisplayValueMap
-                    = claimManagerProxy.getLocalClaimUriDisplayValueMapping(new ArrayList<>(attributeValueMap.keySet()));
-
-            if (!attributeValueMap.isEmpty()) {
-                fullname = attributeDisplayValueMap.containsKey("http://wso2.org/claims/fullname")
-                        ? (String) attributeValueMap.get("http://wso2.org/claims/fullname") : fullname;
-                firstname = attributeDisplayValueMap.containsKey("http://wso2.org/claims/firstname")
-                        ? (String) attributeValueMap.get("http://wso2.org/claims/firstname") : firstname;
-                role = attributeDisplayValueMap.containsKey("http://wso2.org/claims/role")
-                        ? (String) attributeValueMap.get("http://wso2.org/claims/role") : role;
-                thumbnail = attributeDisplayValueMap.containsKey("http://wso2.org/claims/thumbnail")
-                        ? URLDecoder.decode((String) attributeValueMap.get("http://wso2.org/claims/thumbnail"), "UTF-8") : thumbnail;
-            }
-
-            session.setAttribute("uname", n);
-
-            out.print("<a href='servlet2'>visit</a>");
-
-        } catch (IOException e) {
-            System.out.println(e);
-        }
-    }
-
+    
     @Override
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
 
