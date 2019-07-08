@@ -1,13 +1,14 @@
-<%-- 
-    Document   : profile
-    Created on : May 29, 2019, 9:54:14 PM
-    Author     : ericcanull
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
-<html>
 
+<%@page import="edu.portal.webportal.attributes.ClaimManagerProxy"%>
+
+<% 
+    ClaimManagerProxy claimManagerProxy  = (ClaimManagerProxy) session.getAttribute("claimManagerProxy");
+      
+%>
+
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -22,14 +23,14 @@
     <div class="container profile profile-view" id="profile">
       <div class="row">
         <div class="col-md-12 alert-col relative">
-          <div class="alert alert-info absolue center" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">Ã—</span></button><span>Profile save with success</span></div>
+          <div class="alert alert-info absolue center" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><span>Profile save with success</span></div>
         </div>
       </div>
       <form>
         <div class="form-row profile-row">
           <div class="col-md-3 text-center relative" id="avatar-col">
             <div class="avatar" style="text-align: center;">
-              <div class="avatar-bg center"></div>
+              <div class="avatar-bg center" style="background-image: url(<%=claimManagerProxy.getThumbnail()%>);"></div>
             </div>
             <input type="button" id="changePhotoButton" value="Change Photo" onclick="document.getElementById('file').click();" />
             <input type="file" style="display:none;" id="file" name="file" accept="image/*"/>
@@ -39,22 +40,22 @@
             <hr>
             <div class="form-row">
               <div class="col-sm-12 col-md-6">
-                <div class="form-group"><label>Firstname </label><input class="form-control" type="text" name="firstname" readonly=""></div>
+                <div class="form-group"><label>Firstname </label><input class="form-control" value="<%=claimManagerProxy.getFirstName()%>" type="text" name="firstname" readonly=""></div>
               </div>
               <div class="col-sm-12 col-md-6">
-                <div class="form-group"><label>Lastname </label><input class="form-control" type="text" name="lastname" readonly=""></div>
+                <div class="form-group"><label>Lastname </label><input class="form-control" value="<%=claimManagerProxy.getLastName()%>" type="text" name="lastname" readonly=""></div>
               </div>
             </div>
             <div class="form-row">
               <div class="col-sm-12 col-md-6">
-                <div class="form-group"><label>Phone #</label><input class="form-control" type="text" name="firstname" inputmode="tel"></div>
+                <div class="form-group"><label>Phone #</label><input class="form-control" value="<%=claimManagerProxy.getPhoneNumber()%>" type="text" name="phonenumber" inputmode="tel"></div>
               </div>
               <div class="col-sm-12 col-md-6">
-                <div class="form-group"><label>Birthday</label><input class="form-control" type="text" name="lastname" readonly=""></div>
+                <div class="form-group"><label>Birthday</label><input class="form-control" value="<%=claimManagerProxy.getBirthday()%>" type="text" name="lastname" readonly=""></div>
               </div>
             </div>
-            <div class="form-group"><label>Email </label><input class="form-control" type="email" autocomplete="off" required="" name="email" disabled=""></div>
-            <div class="form-group"><label>Personal Email</label><input class="form-control" type="email" autocomplete="off" required="" name="email"></div>
+            <div class="form-group"><label>Email </label><input class="form-control" value="<%=claimManagerProxy.getWorkEmailAddress()%>" type="email" autocomplete="off" required="" name="email" disabled=""></div>
+            <div class="form-group"><label>Personal Email</label><input class="form-control" value="<%=claimManagerProxy.getPersonalEmailAddress()%>" type="email" autocomplete="off" required="" name="email"></div>
             <div class="form-group">
               <div role="tablist" id="accordion-1">
                 <div class="card">

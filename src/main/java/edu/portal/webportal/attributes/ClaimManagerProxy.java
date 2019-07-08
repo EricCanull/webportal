@@ -63,10 +63,15 @@ public class ClaimManagerProxy {
     private final List<Node> oidcDialectNodes;
     private final List<Node> localClaimNodes;
     
-    private String fullName = "";
+    private String fullName = "John Doe";
     private String thumbnail = "";
-    private String firstName = "";
-    private String role = "Student";
+    private String firstName = "John";
+    private String lastName = "Doe";
+    private String title = "Student";
+    private String birthday = "1982-02-22";
+    private String phoneNumber = "210-782-2222";
+    private String personalEmailAddress = "john.doe@gmail.com";
+    private String workEmailAddress = "john.doe@company.com";
     
     public ClaimManagerProxy(
         final String claimManagementUrl,
@@ -100,10 +105,20 @@ public class ClaimManagerProxy {
             try {
                 fullName = attributeDisplayValueMap.containsKey("http://wso2.org/claims/fullname")
                         ? (String) attributeValueMap.get("http://wso2.org/claims/fullname") : fullName;
-                firstName = attributeDisplayValueMap.containsKey("http://wso2.org/claims/firstname")
-                        ? (String) attributeValueMap.get("http://wso2.org/claims/firstname") : firstName;
-                role = attributeDisplayValueMap.containsKey("http://wso2.org/claims/role")
-                        ? (String) attributeValueMap.get("http://wso2.org/claims/role") : role;
+                firstName = attributeDisplayValueMap.containsKey("http://wso2.org/claims/givenname")
+                        ? (String) attributeValueMap.get("http://wso2.org/claims/givenname") : firstName;
+                lastName = attributeDisplayValueMap.containsKey("http://wso2.org/claims/lastname")
+                        ? (String) attributeValueMap.get("http://wso2.org/claims/lastname") : lastName;
+                title = attributeDisplayValueMap.containsKey("http://wso2.org/claims/title")
+                        ? (String) attributeValueMap.get("http://wso2.org/claims/title") : title;
+                phoneNumber = attributeDisplayValueMap.containsKey("http://wso2.org/claims/phoneNumbers.work")
+                        ? (String) attributeValueMap.get("http://wso2.org/claims/phoneNumbers.work") : phoneNumber;
+                personalEmailAddress = attributeDisplayValueMap.containsKey("http://wso2.org/claims/emailaddress")
+                        ? (String) attributeValueMap.get("http://wso2.org/claims/emailaddress") : personalEmailAddress;
+                workEmailAddress = attributeDisplayValueMap.containsKey("http://wso2.org/claims/emails.work")
+                        ? (String) attributeValueMap.get("http://wso2.org/claims/emails.work") : workEmailAddress;
+                birthday = attributeDisplayValueMap.containsKey("http://wso2.org/claims/dob")
+                        ? (String) attributeValueMap.get("http://wso2.org/claims/dob") : birthday;
                 thumbnail = attributeDisplayValueMap.containsKey("http://wso2.org/claims/thumbnail")
                         ? URLDecoder.decode((String) attributeValueMap.get("http://wso2.org/claims/thumbnail"), "UTF-8") : thumbnail;
             } catch (UnsupportedEncodingException ex) {
@@ -339,8 +354,28 @@ public class ClaimManagerProxy {
     public String getFirstName() {
         return firstName;
     }
+    
+    public String getLastName() {
+        return lastName;
+    }
 
-    public String getRole() {
-        return role;
+    public String getTitle() {
+        return title;
+    }
+    
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+    
+    public String getPersonalEmailAddress() {
+        return personalEmailAddress;
+    }
+    
+    public String getWorkEmailAddress() {
+        return workEmailAddress;
+    }
+    
+    public String getBirthday() {
+        return birthday;
     }
 }

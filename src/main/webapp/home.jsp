@@ -1,4 +1,13 @@
-<%@page import="com.google.inject.internal.ImmutableMap"%>
+<%@ page import="org.wso2.carbon.identity.sso.agent.bean.LoggedInSessionBean" %>
+<%@ page import="org.wso2.carbon.identity.sso.agent.util.SSOAgentConstants" %>
+<%@ page import="org.json.JSONObject" %>
+<%@ page import="edu.portal.webportal.agent.CommonUtil"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.net.URLDecoder" %>
+<%@ page import="org.apache.commons.lang.StringEscapeUtils"%>
+<%@ page import="edu.portal.webportal.attributes.ClaimManagerProxy"%>
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <!--
@@ -16,16 +25,7 @@
 ~   See the License for the specific language governing permissions and
 ~   limitations under the License.
 -->
-<%@ page import="org.wso2.carbon.identity.sso.agent.bean.LoggedInSessionBean" %>
-<%@ page import="org.wso2.carbon.identity.sso.agent.util.SSOAgentConstants" %>
-<%@ page import="org.json.JSONObject" %>
-<%@ page import="edu.portal.webportal.agent.CommonUtil"%>
-<%@ page import="java.util.ArrayList"%>
-<%@ page import="java.util.Map" %>
-<%@ page import="java.util.HashMap" %>
-<%@ page import="java.net.URLDecoder" %>
-<%@ page import="org.apache.commons.lang.StringEscapeUtils"%>
-<%@ page import="edu.portal.webportal.attributes.ClaimManagerProxy"%>
+
 
 <%!
   String subjectId = null;
@@ -64,6 +64,7 @@
           = claimManagerProxy.getLocalClaimUriDisplayValueMapping(new ArrayList<>(attributeValueMap.keySet()));
 
   claimManagerProxy.setAttributeValueMap(attributeValueMap);
+    session.setAttribute("claimManagerProxy", claimManagerProxy);
 
   if (sessionBean != null && sessionBean.getSAML2SSO() != null) {
     subjectId = sessionBean.getSAML2SSO().getSubjectId();
@@ -125,18 +126,18 @@
             <div class="collapse navbar-collapse" id="navcol-1">
               <ul class="nav navbar-nav mx-auto">
                 <li class="nav-item" role="presentation"><a class="nav-link active" href="#">Home</a></li>
-                  <% if (claimManagerProxy.getRole().equalsIgnoreCase("ALUMNI") || claimManagerProxy.getRole().equalsIgnoreCase("STUDENT")) { %>
+                  <% if (claimManagerProxy.getTitle().equalsIgnoreCase("ALUMNI") || claimManagerProxy.getTitle().equalsIgnoreCase("STUDENT")) { %>
                 <li class="nav-item" role="presentation"><a class="nav-link" href="#">Classes & Registration</a></li>
                 <li class="nav-item" role="presentation"><a class="nav-link" href="#">Paying for College</a></li>
                 <li class="nav-item" role="presentation"><a class="nav-link" href="#">Student Services</a></li>
                   <% }
-                    if (claimManagerProxy.getRole().equalsIgnoreCase("FACULTY")) { %>
+                    if (claimManagerProxy.getTitle().equalsIgnoreCase("FACULTY")) { %>
                 <li class="nav-item" role="presentation"><a class="nav-link" href="#">Faculty</a></li>
                   <% }
-                    if (claimManagerProxy.getRole().equalsIgnoreCase("FACULTY") || claimManagerProxy.getRole().equalsIgnoreCase("EMPLOYEE")) { %>
+                    if (claimManagerProxy.getTitle().equalsIgnoreCase("FACULTY") || claimManagerProxy.getTitle().equalsIgnoreCase("EMPLOYEE")) { %>
                 <li class="nav-item" role="presentation"><a class="nav-link" href="#">Employee</a></li>
                   <% }
-                    if (claimManagerProxy.getRole().equalsIgnoreCase("Health Services")) { %>
+                    if (claimManagerProxy.getTitle().equalsIgnoreCase("Health Services")) { %>
                 <li class="nav-item" role="presentation"><a class="nav-link" href="#">Health Services</a></li>
                   <% } %>
               </ul>
@@ -269,16 +270,16 @@
                 </span>
                 <span>
                   <span class="account-user-name"><%=claimManagerProxy.getFullName()%></span><br>
-                  <span class="account-position"><%=claimManagerProxy.getRole()%></span>
+                  <span class="account-position"><%=claimManagerProxy.getTitle()%></span>
                 </span>
               </a>
               <div class="dropdown-menu animated fadeInRight m-t-xs" role="menu">
                 <a class="dropdown-item" id="profile-toggle" role="presentation" href="#">Profile</a>
                 <a class="dropdown-item" href="https://tamusa.blackboard.com/webapps/bb-auth-provider-cas-bb_bb60/execute/casLogin?cmd=login&authProviderId=_105_1&redirectUrl=https%3A%2F%2Ftamusa.blackboard.com%2Fwebapps%2Fportal%2Fframeset.jsp">BlackBoard</a>
-                <% if (claimManagerProxy.getRole().equalsIgnoreCase("ALUMNI") || claimManagerProxy.getRole().equalsIgnoreCase("STUDENT")) { %>
+                <% if (claimManagerProxy.getTitle().equalsIgnoreCase("ALUMNI") || claimManagerProxy.getTitle().equalsIgnoreCase("STUDENT")) { %>
                 <a class="dropdown-item" role="presentation" href="https://outlook.office.com/owa/?realm=jaguar.tamu.edu">Email</a>
                 <% }
-                  if (claimManagerProxy.getRole().equalsIgnoreCase("FACULTY") || claimManagerProxy.getRole().equalsIgnoreCase("EMPLOYEE")) { %>
+                  if (claimManagerProxy.getTitle().equalsIgnoreCase("FACULTY") || claimManagerProxy.getTitle().equalsIgnoreCase("EMPLOYEE")) { %>
                 <a class="dropdown-item" role="presentation" href="https://outlook.office.com/owa/?realm=tamusa.edu">Email</a>
                 <% }%>
                 <div class="dropdown-divider"></div>
