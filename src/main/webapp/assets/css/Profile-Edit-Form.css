@@ -35,7 +35,7 @@ div.profile-row {
 }
 
 #avatar-col {
-  padding: 10px 30px 0 0;
+  padding: 10px 25px 0 0;
 }
 
 .absolue.center {
@@ -93,3 +93,57 @@ div.avatar-bg {
 div.avatar {
 }
 
+label {
+    margin-top: .5rem;
+    margin-bottom: .25rem;
+}
+
+.card {
+  /*display: none;*/
+  border: none;
+}
+
+.item-1.collapse.show {
+   border: 1px solid rgba(0,0,0,.125);
+}
+
+.card-header {
+  background: #f2fbfe;
+  margin-top: 5px;
+  padding: .75rem .25rem;
+  text-align: left;
+  width: 100%;
+}
+
+#avatar-col > div:nth-child(4) > div {
+  margin-top: 15px;
+}
+
+a.accordion {
+    transition: 0.4s;
+}
+
+a.accordion.active, a.accordion:hover {
+    background-color: #ddd;
+}
+
+a.accordion:after, a.toggle:after {
+    content: '\002B';
+    color: #777;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+a.accordion.active:after, a.toggle.active:after {
+    content: "\2212";
+}
+
+div.panel {
+    display: none;
+    background-color: white;
+    border: 1px solid rgba(0,0,0,.125);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+}

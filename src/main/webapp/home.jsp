@@ -145,7 +145,7 @@
               
           <div class="overlay" id="profile-overlay"></div>
           <div data-role="popup" id="popup-profile" data-overlay-theme="b" data-theme="a" data-tolerance="15,15" class="ui-content">
-            <iframe src="pages/profile.jsp" width="820" height="580" seamless=""></iframe>
+            <iframe src="pages/profile.jsp" width="820" height="590" seamless=""></iframe>
           </div>
   
             
@@ -510,7 +510,11 @@
               </div>
               <div class="ibox-content">
                 <div class="journal-content-article">
-                  <p style="text-align: center; font-family: \"Times New Roman\"; font-size: 14px;"><strong>CONNECT WITH US</strong><br /> <a href="https://www.facebook.com/TAMUSanAntonio" target="_blank" title="TAMU-SA Facebook"><img alt="Facebook" border="0" height="32" src="http://www.tamusa.tamus.edu/uploadFile/folders/maguero8887/Image/Image-635351484561141662-10.100.150.124.png" style="text-align: left; line-height: 18px; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 14px;" width="32" /></a>&nbsp; <a href="https://twitter.com/TAMUSanAntonio" target="_blank" title="TAMU-SA Twitter"> <img alt="Twitter" border="0" height="32" src="http://www.tamusa.tamus.edu/uploadFile/folders/maguero8887/Image/Image-635351484756771670-10.100.150.124.png" style="text-align: left; line-height: 18px; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 14px;" width="32" /></a>&nbsp; <a href="http://www.youtube.com/user/tamusavids" target="_blank" title="TAMU-SA YouTube"> <img alt="Youtube" border="0" height="32" src="http://www.tamusa.tamus.edu/uploadFile/folders/maguero8887/Image/Image-635404336972107630-10.100.150.124.png" style="text-align: left; line-height: 18px; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 14px;" width="32" /></a></p>
+                  <p style="text-align: center; font-family: \"Times New Roman\"; font-size: 14px;">
+                    <strong>CONNECT WITH US</strong><br /> 
+                    <a href="https://www.facebook.com/TAMUSanAntonio" target="_blank" title="TAMU-SA Facebook">
+                      <!--<img alt="Facebook" border="0" height="32" src="http://www.tamusa.tamus.edu/uploadFile/folders/maguero8887/Image/Image-635351484561141662-10.100.150.124.png" style="text-align: left; line-height: 18px; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 14px;" />-->
+                    <!--</a>&nbsp; <a href="https://twitter.com/TAMUSanAntonio" target="_blank" title="TAMU-SA Twitter"> <img alt="Twitter" border="0" height="32" src="http://www.tamusa.tamus.edu/uploadFile/folders/maguero8887/Image/Image-635351484756771670-10.100.150.124.png" style="text-align: left; line-height: 18px; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 14px;" width="32"></a>&nbsp; <a href="http://www.youtube.com/user/tamusavids" target="_blank" title="TAMU-SA YouTube"> <img alt="Youtube" border="0" height="32" src="http://www.tamusa.tamus.edu/uploadFile/folders/maguero8887/Image/Image-635404336972107630-10.100.150.124.png" style="text-align: left; line-height: 18px; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 14px;" width="32" /></a></p>-->
                 </div>
               </div>
             </div>
