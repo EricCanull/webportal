@@ -117,8 +117,10 @@
         <nav class="navbar-custom navbar navbar-fixed-top navbar-dark navbar-expand-lg">
           <div class="container-fluid">
 <!--            <div class="navbar-brand-circle">-->
-              <a class="navbar-brand" href="#" style="background-image: url(&quot;assets/img/jaghead.png&quot;);"></a>
-            <!--</div>-->
+            <div class="navbar-brand-container">
+              <a class="navbar-brand d-flex d-sm-flex align-items-center align-items-sm-center" href="#"><i class="fas fa-globe" style="font-size: 40px;color: rgba(238,238,238,0.9);"></i><span style="color: rgba(249,249,249,0.9);font-size: 22px;">  Webportal</span></a>
+              <!--<a class="navbar-brand" href="#" style="background-image: url(&quot;assets/img/jaghead.png&quot;);"></a>-->
+            </div>
             <button class="navbar-toggler navbar-dark float-right" data-toggle="collapse" data-target="#navcol-1">
               <span class="sr-only">Toggle navigation</span>
               <span class="navbar-toggler-icon"></span>
@@ -145,7 +147,7 @@
               
           <div class="overlay" id="profile-overlay"></div>
           <div data-role="popup" id="popup-profile" data-overlay-theme="b" data-theme="a" data-tolerance="15,15" class="ui-content">
-            <iframe src="pages/profile.jsp" width="820" height="590" seamless=""></iframe>
+            <iframe src="profile.jsp" width="820" height="590" seamless=""></iframe>
           </div>
   
             
@@ -381,13 +383,6 @@
                         <% } %>
                       </tbody>
                     </table>
-                 <%--       <div class="attributeRequestor">
-                      for(String s : attributeArray) { 
-                        <p><%=s%></p>
-                        <% } %>
-               
-                      </div>
-                          --%>
                   </div>
                   <% } else { %>
                   <p align="center">No user details Available. Configure SP Claim Configurations.</p>
@@ -451,13 +446,13 @@
               <div class="ibox-content">
                 <div class="journal-content-article">
                   <ul>
-                    <li><a href="https://ssb-prod.ec.tamusa.edu/ssomanager/c/SSB?pkg=zwsksnso.p_redirect" target="_blank">Orientation Signup</a></li>
-                    <li><a href="http://www.tamusa.edu/university-college/first-year-experience/NewStudentOrientation/index.html" target="_blank">Orientation Information</a></li>
-                    <li><a href="https://www.americancampus.com/portfolio/property-details/tx/esperanza-hall/761" target="_blank">Housing</a></li>
-                    <li><a href="http://www.tamusa.edu/welcomecenter/NewStudentChecklist/meningitisvaccine.html" target="_blank">Meningitis</a></li>
-                    <li><a href="http://www.tamusa.edu/militaryaffairs/" target="_blank">Military Affairs</a></li>
-                    <li><a href="https://tamusa.givepulse.com/sso/cas/tamusa" target="_blank">Volunteer/Service-Learning</a></li>
-                    <li><a href="https://ssb-prod.ec.tamusa.edu/ssomanager/c/SSB?pkg=tamusa_everfi_sso.call_rest_webservice" target="_blank">AlcoholEDU Course</a></li>
+                    <li><a href="#" target="_blank">Orientation Signup</a></li>
+                    <li><a href="#" target="_blank">Orientation Information</a></li>
+                    <li><a href="#" target="_blank">Housing</a></li>
+                    <li><a href="#" target="_blank">Meningitis</a></li>
+                    <li><a href="#" target="_blank">Military Affairs</a></li>
+                    <li><a href="#" target="_blank">Volunteer/Service-Learning</a></li>
+                    <li><a href="#" target="_blank">AlcoholEDU Course</a></li>
                   </ul>
                 </div>
               </div>
@@ -486,10 +481,10 @@
               <div class="ibox-content">
                 <div class="journal-content-article">
                   <ul>
-                    <li><a href="https://tamusa.campuslabs.com/engage/account/login?returnUrl=/engage/" target="_blank">JagSync</a></li>
-                    <li><a href="https://tamusa.campuslabs.com/engage/account/login?returnUrl=/engage/organization/student-government-association" target="_blank">Student Government Association (SGA)</a></li>
-                    <li><a href="https://tamusa.givepulse.com/sso/cas/tamusa" target="_blank">Volunteer/Service-Learning</a></li>
-                    <li><a href="https://www.imleagues.com/spa/account/ssoredirect?schoolId=85063363355e4411b4eb0f6104eda7ca" target="_blank">IMLeagues</a></li>
+                    <li><a href="#" target="_blank">JagSync</a></li>
+                    <li><a href="#" target="_blank">Student Government Association (SGA)</a></li>
+                    <li><a href="#" target="_blank">Volunteer/Service-Learning</a></li>
+                    <li><a href="#" target="_blank">IMLeagues</a></li>
                   </ul>
                 </div>
               </div>
@@ -513,8 +508,9 @@
                   <p style="text-align: center; font-family: \"Times New Roman\"; font-size: 14px;">
                     <strong>CONNECT WITH US</strong><br /> 
                     <a href="https://www.facebook.com/TAMUSanAntonio" target="_blank" title="TAMU-SA Facebook">
-                      <!--<img alt="Facebook" border="0" height="32" src="http://www.tamusa.tamus.edu/uploadFile/folders/maguero8887/Image/Image-635351484561141662-10.100.150.124.png" style="text-align: left; line-height: 18px; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 14px;" />-->
-                    <!--</a>&nbsp; <a href="https://twitter.com/TAMUSanAntonio" target="_blank" title="TAMU-SA Twitter"> <img alt="Twitter" border="0" height="32" src="http://www.tamusa.tamus.edu/uploadFile/folders/maguero8887/Image/Image-635351484756771670-10.100.150.124.png" style="text-align: left; line-height: 18px; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 14px;" width="32"></a>&nbsp; <a href="http://www.youtube.com/user/tamusavids" target="_blank" title="TAMU-SA YouTube"> <img alt="Youtube" border="0" height="32" src="http://www.tamusa.tamus.edu/uploadFile/folders/maguero8887/Image/Image-635404336972107630-10.100.150.124.png" style="text-align: left; line-height: 18px; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 14px;" width="32" /></a></p>-->
+                      <img alt="Facebook" border="0" height="32" src="http://www.tamusa.tamus.edu/uploadFile/folders/maguero8887/Image/Image-635351484561141662-10.100.150.124.png" style="text-align: left; line-height: 18px; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 14px;" />
+                    </a>&nbsp; <a href="https://twitter.com/TAMUSanAntonio" target="_blank" title="TAMU-SA Twitter"> <img alt="Twitter" border="0" height="32" src="http://www.tamusa.tamus.edu/uploadFile/folders/maguero8887/Image/Image-635351484756771670-10.100.150.124.png" style="text-align: left; line-height: 18px; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 14px;" width="32">
+                    </a>&nbsp; <a href="http://www.youtube.com/user/tamusavids" target="_blank" title="TAMU-SA YouTube"> <img alt="Youtube" border="0" height="32" src="http://www.tamusa.tamus.edu/uploadFile/folders/maguero8887/Image/Image-635404336972107630-10.100.150.124.png" style="text-align: left; line-height: 18px; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 14px;" width="32"/></a></p>
                 </div>
               </div>
             </div>
